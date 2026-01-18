@@ -1,6 +1,8 @@
 # GraphQL MCP Server
 
-A generic Model Context Protocol (MCP) server that turns any GraphQL API into Claude Code tools.
+> Turn any GraphQL API into Claude Code tools with zero coding
+
+A generic Model Context Protocol (MCP) server that automatically converts your `.graphql` query files into tools Claude can use. Works with **any** GraphQL API - GitHub, Shopify, Hasura, or your own.
 
 ## What It Does
 
@@ -8,7 +10,7 @@ A generic Model Context Protocol (MCP) server that turns any GraphQL API into Cl
 - **Drop `.graphql` query files in a folder**
 - **Automatically exposes them as Claude Code tools**
 
-No coding required - just write GraphQL queries.
+No MCP coding required - just write GraphQL queries and configure the endpoint.
 
 ## Why Use This?
 
@@ -38,7 +40,7 @@ npm install -g graphql-mcp-server
 Or clone and build:
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/graphql-mcp-server.git
+git clone https://github.com/Chakit22/graphql-mcp-server.git
 cd graphql-mcp-server
 npm install
 npm run build
@@ -166,6 +168,25 @@ query SearchRepos($query: String!, $limit: Int!) {
 
 ## Examples
 
+### SpaceX API (No Auth Required - Try This First!)
+
+Perfect for testing - works immediately without API keys.
+
+**Config:**
+```json
+{
+  "endpoint": "https://spacex-production.up.railway.app/",
+  "operationsDir": "./operations",
+  "name": "spacex-mcp"
+}
+```
+
+**Available Operations:**
+- `GetRockets` - Get all SpaceX rockets
+- `GetLaunches` - Get recent launches
+
+📁 Full example: [`examples/spacex/`](examples/spacex/)
+
 ### GitHub API
 
 **Config:**
@@ -179,8 +200,11 @@ query SearchRepos($query: String!, $limit: Int!) {
 }
 ```
 
-**Operations:**
-- See `examples/github/operations/` for sample queries
+**Available Operations:**
+- `GetRepository` - Get repo details
+- `SearchRepositories` - Search repos by keyword
+
+📁 Full example: [`examples/github/`](examples/github/)
 
 ### Shopify API
 
@@ -195,8 +219,10 @@ query SearchRepos($query: String!, $limit: Int!) {
 }
 ```
 
-**Operations:**
-- See `examples/shopify/operations/` for sample queries
+**Available Operations:**
+- `GetProducts` - Get products with pagination
+
+📁 Full example: [`examples/shopify/`](examples/shopify/)
 
 ### Hasura / Self-Hosted
 

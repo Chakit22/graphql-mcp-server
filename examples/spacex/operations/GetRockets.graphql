@@ -1,0 +1,27 @@
+# @description Get all SpaceX rockets with their details
+
+query GetRockets {
+  rockets {
+    id
+    name
+    type
+    active
+    stages
+    boosters
+    cost_per_launch
+    success_rate_pct
+    first_flight
+    country
+    company
+    height {
+      meters
+    }
+    diameter {
+      meters
+    }
+    mass {
+      kg
+    }
+    description
+  }
+}
