@@ -33,11 +33,7 @@ Instead of writing custom MCP server code for each API, just:
 
 ## Installation
 
-```bash
-npm install -g graphql-mcp-server
-```
-
-Or clone and build:
+Clone and build from source:
 
 ```bash
 git clone https://github.com/Chakit22/graphql-mcp-server.git
