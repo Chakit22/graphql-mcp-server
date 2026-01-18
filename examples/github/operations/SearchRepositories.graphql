@@ -1,0 +1,20 @@
+# @description Search for repositories by keyword
+
+query SearchRepositories($query: String!, $first: Int!) {
+  search(query: $query, type: REPOSITORY, first: $first) {
+    repositoryCount
+    edges {
+      node {
+        ... on Repository {
+          name
+          description
+          stargazerCount
+          url
+          owner {
+            login
+          }
+        }
+      }
+    }
+  }
+}

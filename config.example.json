@@ -1,0 +1,9 @@
+{
+  "endpoint": "https://api.example.com/graphql",
+  "operationsDir": "./operations",
+  "headers": {
+    "Authorization": "Bearer YOUR_TOKEN_HERE"
+  },
+  "name": "my-graphql-mcp",
+  "version": "1.0.0"
+}

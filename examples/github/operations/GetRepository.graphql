@@ -1,0 +1,17 @@
+# @description Get repository information including stars, forks, and description
+
+query GetRepository($owner: String!, $name: String!) {
+  repository(owner: $owner, name: $name) {
+    name
+    description
+    stargazerCount
+    forkCount
+    url
+    primaryLanguage {
+      name
+    }
+    owner {
+      login
+    }
+  }
+}

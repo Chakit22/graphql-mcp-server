@@ -1,0 +1,23 @@
+# @description Get products from the store with pagination
+
+query GetProducts($first: Int!) {
+  products(first: $first) {
+    edges {
+      node {
+        id
+        title
+        description
+        status
+        totalInventory
+        variants(first: 5) {
+          edges {
+            node {
+              price
+              sku
+            }
+          }
+        }
+      }
+    }
+  }
+}
