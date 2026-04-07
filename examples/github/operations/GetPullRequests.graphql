@@ -1,0 +1,22 @@
+# @description List recent pull requests for a repository with review status
+
+query GetPullRequests($owner: String!, $name: String!, $first: Int!) {
+  repository(owner: $owner, name: $name) {
+    pullRequests(first: $first, states: OPEN, orderBy: {field: CREATED_AT, direction: DESC}) {
+      totalCount
+      nodes {
+        title
+        number
+        state
+        createdAt
+        author {
+          login
+        }
+        reviewDecision
+        additions
+        deletions
+        changedFiles
+      }
+    }
+  }
+}

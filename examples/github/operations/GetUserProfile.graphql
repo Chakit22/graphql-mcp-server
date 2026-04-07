@@ -1,0 +1,32 @@
+# @description Get a GitHub user's profile, repos, and contribution stats
+
+query GetUserProfile($login: String!) {
+  user(login: $login) {
+    name
+    login
+    bio
+    company
+    location
+    followers {
+      totalCount
+    }
+    following {
+      totalCount
+    }
+    repositories(first: 5, orderBy: {field: STARGAZERS, direction: DESC}, ownerAffiliations: OWNER) {
+      totalCount
+      nodes {
+        name
+        stargazerCount
+        primaryLanguage {
+          name
+        }
+      }
+    }
+    contributionsCollection {
+      totalCommitContributions
+      totalPullRequestContributions
+      totalIssueContributions
+    }
+  }
+}

@@ -1,0 +1,28 @@
+# @description List open issues for a repository with labels and assignees
+
+query GetIssues($owner: String!, $name: String!, $first: Int!) {
+  repository(owner: $owner, name: $name) {
+    issues(first: $first, states: OPEN, orderBy: {field: CREATED_AT, direction: DESC}) {
+      totalCount
+      nodes {
+        title
+        number
+        state
+        createdAt
+        author {
+          login
+        }
+        labels(first: 5) {
+          nodes {
+            name
+          }
+        }
+        assignees(first: 3) {
+          nodes {
+            login
+          }
+        }
+      }
+    }
+  }
+}
